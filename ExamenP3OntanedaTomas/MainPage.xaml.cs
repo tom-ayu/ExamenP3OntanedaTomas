@@ -1,24 +1,32 @@
-﻿namespace ExamenP3OntanedaTomas
+﻿
+using ExamenP3OntanedaTomas.Models;
+using ExamenP3OntanedaTomas.Repositories;
+using System.Collections.ObjectModel;
+
+namespace ExamenP3OntanedaTomas
 {
     public partial class MainPage : ContentPage
     {
-        int count = 0;
-
+        PaisAPIRespository _paisAPIRepository;
+        Pais pais = new Pais();
+        ObservableCollection<Pais> paises = new ObservableCollection<Pais>();
         public MainPage()
         {
+            _paisAPIRepository = new PaisAPIRespository();   
             InitializeComponent();
-        }
 
+ 
+        }
         private void BuscarAPIClicked(object sender, EventArgs e)
         {
-            count++;
+            string _prompt = TO_prompt.Text;
+            var pais = _paisAPIRepository.DevuelvePais(_prompt).ToList();
+            BindingContext = this;
+        }
 
-            if (count == 1)
-                TOBuscarAPI.Text = $"Clicked {count} time";
-            else
-                TOBuscarAPI.Text = $"Clicked {count} times";
+        private void BorrarCampoClicked(object sender, EventArgs e)
+        {
 
-            SemanticScreenReader.Announce(TOBuscarAPI.Text);
         }
     }
 

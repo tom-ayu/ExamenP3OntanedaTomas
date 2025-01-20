@@ -8,13 +8,32 @@
             Padding="30,0"
             Spacing="25">
 
-
+            <Editor x:Name="TO_prompt"
+                    Placeholder="Ingrese el Pais"
+                    AutoSize="TextChanges" 
+                    HeightRequest="30" />
+            
             <Button
                 x:Name="TOBuscarAPI"
                 Text="Buscar" 
-                SemanticProperties.Hint="Counts the number of times you click"
                 Clicked="BuscarAPIClicked"
                 HorizontalOptions="Fill" />
+
+            <Button
+                x:Name="TOBorrarCampo"
+                Text="Limpiar campo de texto" 
+                Clicked="BorrarCampoClicked"
+                HorizontalOptions="Fill" />
+
+            <ListView x:Name="TOPais" ItemsSource="{Binding pais}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding NombreOficial}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+                
+
         </VerticalStackLayout>
     </ScrollView>
 
