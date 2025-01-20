@@ -1,42 +1,38 @@
 ﻿using ExamenP3OntanedaTomas.Models;
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace ExamenP3OntanedaTomas.Repositories
 {
-    public class PaisAPIRespository
+    public class PaisAPIRepository
     {
         public string _url = "https://restcountries.com/v3.1/name/";
 
-        public IEnumerable<Pais> DevuelvePais(string prompt)
+        public async Task<IEnumerable<Pais>> DevuelvePaisAsync(string prompt)
         {
-            string urlFinal = _url + prompt + "?fields=name,region,maps";
-
+            string urlFinal = $"{_url}{prompt}?fields=name,region,maps";
             using (HttpClient httpClient = new HttpClient())
             {
                 try
                 {
-                    var response = httpClient.GetAsync(urlFinal).Result;
-                    var json_data = response.Content.ReadAsStringAsync().Result;
-
-                    List<Pais> estudiantesAPI = JsonConvert.DeserializeObject<List<Pais>>(json_data);
+                    var response = await httpClient.GetAsync(urlFinal);
+                    var json_data = await response.Content.ReadAsStringAsync();
+                    List<Pais> paisAPI = JsonConvert.DeserializeObject<List<Pais>>(json_data);
+                    return paisAPI;
+                }
+                catch (HttpRequestException httpEx)
+                {
+                    Console.WriteLine($"Error solicitud HTTP: {httpEx.Message}");
                 }
                 catch (Exception ex)
                 {
-                    throw;
+                    Console.WriteLine($"Error inesperado: {ex.Message}");
                 }
+                return new List<Pais>();
             }
-
-            return new List<Pais>();
-        }
-
-        internal bool DevuelvePais()
-        {
-            throw new NotImplementedException();
         }
     }
+
 }

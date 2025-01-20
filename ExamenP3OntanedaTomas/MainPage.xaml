@@ -3,38 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ExamenP3OntanedaTomas.MainPage">
 
-    <ScrollView>
-        <VerticalStackLayout
-            Padding="30,0"
-            Spacing="25">
-
-            <Editor x:Name="TO_prompt"
-                    Placeholder="Ingrese el Pais"
-                    AutoSize="TextChanges" 
-                    HeightRequest="30" />
-            
-            <Button
-                x:Name="TOBuscarAPI"
-                Text="Buscar" 
-                Clicked="BuscarAPIClicked"
-                HorizontalOptions="Fill" />
-
-            <Button
-                x:Name="TOBorrarCampo"
-                Text="Limpiar campo de texto" 
-                Clicked="BorrarCampoClicked"
-                HorizontalOptions="Fill" />
-
-            <ListView x:Name="TOPais" ItemsSource="{Binding pais}">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <TextCell Text="{Binding NombreOficial}" />
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-                
-
-        </VerticalStackLayout>
-    </ScrollView>
+    <StackLayout Padding="10">
+        <Entry x:Name="TOPrompt" Placeholder="Ingrese el nombre del país" />
+        <Button x:Name="TOBuscarAPI" Text="Buscar" Clicked="BuscarAPIClicked" HorizontalOptions="Fill" />
+        <Label Text="{Binding NombreOficial}" />
+        <Label Text="{Binding Region}" />
+        <Label Text="{Binding GoogleMaps}" />
+    </StackLayout>
 
 </ContentPage>
