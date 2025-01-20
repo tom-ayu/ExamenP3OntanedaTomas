@@ -9,16 +9,16 @@
             InitializeComponent();
         }
 
-        private void OnCounterClicked(object sender, EventArgs e)
+        private void BuscarAPIClicked(object sender, EventArgs e)
         {
             count++;
 
             if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
+                TOBuscarAPI.Text = $"Clicked {count} time";
             else
-                CounterBtn.Text = $"Clicked {count} times";
+                TOBuscarAPI.Text = $"Clicked {count} times";
 
-            SemanticScreenReader.Announce(CounterBtn.Text);
+            SemanticScreenReader.Announce(TOBuscarAPI.Text);
         }
     }
 
