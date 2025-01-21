@@ -4,24 +4,19 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:ExamenP3OntanedaTomas"
-    Shell.FlyoutBehavior="Locked"
+    Shell.FlyoutBehavior="Disabled"
     Title="Examen P3 Tomás Ontaneda">
 
-    <ShellContent
-        Title="Primera Pantalla"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
-
-    <ShellContent
-    Title="Segunda Pantalla"
-    ContentTemplate="{DataTemplate local:SegundaPantalla}"
-    Route="SegundaPantalla" />
-
     <TabBar>
-        <Tab
-        Title="Primera Página" Route="HomePage"/>
-        <Tab
-        Title="Segunda Página" Route="SegundaPagina" />
+        <ShellContent
+            Title="Primera Pantalla"
+            ContentTemplate="{DataTemplate local:MainPage}"
+            Route="MainPage" />
+
+        <ShellContent
+            Title="Segunda Pantalla"
+            ContentTemplate="{DataTemplate local:SegundaPantalla}"
+            Route="SegundaPantalla" />
     </TabBar>
 
 </Shell>

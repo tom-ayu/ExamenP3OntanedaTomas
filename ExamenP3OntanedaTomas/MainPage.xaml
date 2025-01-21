@@ -1,14 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:ExamenP3OntanedaTomas.ViewModels"
              x:Class="ExamenP3OntanedaTomas.MainPage">
 
-    <StackLayout Padding="10">
-        <Entry x:Name="TOPrompt" Placeholder="Ingrese el nombre del país" />
+    <ContentPage.BindingContext>
+        <vm:PaisViewModel/>
+    </ContentPage.BindingContext>
+
+    <StackLayout Padding="20">
+        <Entry Text="{Binding Prompt}" Placeholder="Ingrese el nombre del país" />
         <Button x:Name="TOBuscarAPI" Text="Buscar" Clicked="BuscarAPIClicked" HorizontalOptions="Fill" />
-        <Label Text="{Binding NombreOficial}" />
-        <Label Text="{Binding Region}" />
-        <Label Text="{Binding GoogleMaps}" />
+        <Label Text="{Binding paisSelec.NombreOficial}" />
+        <Label Text="{Binding paisSelec.Region}" />
+        <Label Text="{Binding paisSelec.GoogleMaps}" />
     </StackLayout>
 
 </ContentPage>
