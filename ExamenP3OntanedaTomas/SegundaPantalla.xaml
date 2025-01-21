@@ -1,14 +1,34 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ExamenP3OntanedaTomas.ViewModels"
              x:Class="ExamenP3OntanedaTomas.SegundaPantalla"
-             Title="SegundaPantalla">
-    <VerticalStackLayout>
-        <Label
-            Text="Hello, World!"
-            Style="{StaticResource Headline}"
-            SemanticProperties.HeadingLevel="Level1" />
-        
-        
-    </VerticalStackLayout>
+             Title="Segunda Pantalla">
+
+    <ContentPage.BindingContext>
+        <local:PaisesViewModel />
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="10">
+            <Label
+        Text="Tomás Ontaneda"
+        Style="{StaticResource Headline}"
+        SemanticProperties.HeadingLevel="Level1" />
+
+            <ListView ItemsSource="{Binding Paises}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="10" Spacing="5">
+                                <Label Text="{Binding NombreOficial}" />
+                                <Label Text="{Binding Region}"/>
+                                <Label Text="{Binding GoogleMaps}"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
