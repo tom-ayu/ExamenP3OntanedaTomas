@@ -56,7 +56,8 @@ namespace ExamenP3OntanedaTomas.ViewModels
                         NombreOficial = primerPais.Name.Official,
                         Region = primerPais.Region,
                         GoogleMaps = primerPais.Maps.GoogleMaps,
-                        OpenStreetMaps = primerPais.Maps.OpenStreetMaps
+                        OpenStreetMaps = primerPais.Maps.OpenStreetMaps,
+                        NombreUsuario = "TOntaneda"
                     };
 
                     await paisSQLite.GuardarPaisAsync(paisDB);

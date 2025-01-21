@@ -12,6 +12,7 @@ namespace ExamenP3OntanedaTomas.Models
         public string Region { get; set; }
         public string GoogleMaps { get; set; }
         public string OpenStreetMaps { get; set; }
+        public string NombreUsuario { get; set; }
     }
 
 }
